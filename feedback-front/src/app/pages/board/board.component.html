@@ -1,0 +1,64 @@
+<nav class="navbar">
+  <h1>🚀 Feedback Board</h1>
+  <button class="btn-logout" (click)="logout()">Sair</button>
+</nav>
+
+<div class="board-container">
+  
+  <div class="board-header">
+    <h2>Sugestões da Comunidade</h2>
+    <button class="btn btn-primary btn-add" (click)="openModal()">
+      + Nova Sugestão
+    </button>
+  </div>
+
+  <div *ngIf="suggestions.length === 0" class="empty-state">
+    <p>Nenhuma sugestão ainda. Seja o primeiro!</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="suggestion-card" *ngFor="let s of suggestions" [class.trending-border]="s.isTrending">
+      
+      <div class="card-header">
+        <span class="author">&#64;{{ s.username }}</span>
+        
+        <span *ngIf="s.isTrending" class="badge-trending">🔥 EM ALTA</span>
+      </div>
+
+      <h3>{{ s.title }}</h3>
+      <p class="desc">{{ s.description }}</p>
+
+      <div class="card-footer">
+        <span class="date">{{ s.createdAt | date:'dd/MM/yyyy' }}</span>
+        
+        <button class="btn-vote" (click)="vote(s.id)">
+          👍 {{ s.voteCount }}
+        </button>
+      </div>
+    </div> 
+  </div> 
+
+</div> 
+
+<div class="modal-overlay" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <h3>Nova Sugestão</h3>
+    
+    <form (ngSubmit)="submitSuggestion()">
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" [(ngModel)]="newSuggestion.title" name="title" required placeholder="Resuma sua ideia">
+      </div>
+
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea [(ngModel)]="newSuggestion.description" name="desc" rows="4" required placeholder="Detalhe sua sugestão..."></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Publicar</button>
+      </div>
+    </form>
+  </div>
+</div>

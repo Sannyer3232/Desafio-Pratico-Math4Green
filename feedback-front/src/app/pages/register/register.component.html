@@ -1,0 +1,38 @@
+
+<div class="auth-container">
+  <div class="card">
+    <h2>Criar Conta</h2>
+    
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="reg-username">Escolha um Usuário</label>
+        <input 
+          type="text" 
+          id="reg-username" 
+          [(ngModel)]="registerData.username" 
+          name="username" 
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-password">Escolha uma Senha</label>
+        <input 
+          type="password" 
+          id="reg-password" 
+          [(ngModel)]="registerData.password" 
+          name="password" 
+          required>
+      </div>
+
+      <span *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</span>
+
+      <button type="submit" class="btn btn-primary">
+        CADASTRAR
+      </button>
+
+      <button type="button" class="btn btn-link" routerLink="/login">
+        Já tem conta? Voltar para Login
+      </button>
+    </form>
+  </div>
+</div>

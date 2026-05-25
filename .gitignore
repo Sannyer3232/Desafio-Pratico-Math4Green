@@ -1,0 +1,48 @@
+# =========================
+# GERAL / IDEs
+# =========================
+.DS_Store
+Thumbs.db
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# =========================
+# BACKEND (.NET / C#)
+# =========================
+# Binários e Builds
+[Bb]in/
+[Oo]bj/
+
+# Configurações de usuário/ambiente 
+# appsettings.Development.json
+# appsettings.Local.json
+
+# Logs
+*.log
+
+# =========================
+# FRONTEND (ANGULAR / NODE)
+# =========================
+# Dependências 
+node_modules/
+
+# Build do Angular
+dist/
+out-tsc/
+
+# Cache e arquivos temporários do Angular 
+.angular/
+.sass-cache/
+
+# Logs do NPM
+npm-debug.log
+yarn-error.log
+
+# Testes de cobertura
+coverage/
+
